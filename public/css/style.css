@@ -684,7 +684,7 @@ h1, h2, h3, h4, h5, h6, .display-font {
     margin: 0 0.25rem;
 }
 
-/* Animated Login Button (styled like Proposal button, red with shimmer) */
+/* Animated Login Button (styled like Proposal button, red with dancing animation) */
 .btn-login-animated {
     position: relative;
     background-color: var(--color-primary);
@@ -703,38 +703,26 @@ h1, h2, h3, h4, h5, h6, .display-font {
     gap: 0.5rem;
     cursor: pointer;
     z-index: 1;
+    animation: buttonDance 4s infinite ease-in-out;
 }
 
-/* Sweeping light beam shimmer effect */
-.btn-login-animated::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -60%;
-    width: 30%;
-    height: 200%;
-    background: rgba(255, 255, 255, 0.35);
-    transform: rotate(30deg);
-    transition: none;
-    animation: buttonShimmer 4s infinite ease-in-out;
-}
-
-@keyframes buttonShimmer {
-    0% {
-        left: -60%;
+@keyframes buttonDance {
+    0%, 80%, 100% {
+        transform: rotate(0deg) scale(1);
     }
-    15% {
-        left: 140%;
+    82%, 86%, 90%, 94%, 98% {
+        transform: rotate(-3deg) scale(1.04);
     }
-    100% {
-        left: 140%;
+    84%, 88%, 92%, 96% {
+        transform: rotate(3deg) scale(1.04);
     }
 }
 
 .btn-login-animated:hover {
     background-color: #c62828;
-    transform: translateY(-2px) scale(1.03);
+    transform: translateY(-2px) scale(1.05);
     box-shadow: 0 6px 20px rgba(229, 57, 53, 0.35);
+    animation: none;
 }
 
 .btn-login-animated:active {

@@ -1,6 +1,6 @@
-<div class="top-bar d-none d-lg-block">
+<div class="top-bar">
     <div class="container-fluid ps-2 pe-4 ps-md-3 pe-md-5">
-        <div class="d-flex justify-content-between align-items-center py-2">
+        <div class="d-flex flex-wrap justify-content-center justify-content-md-between align-items-center py-2 gap-2 text-center text-md-start">
             <!-- Left Side -->
             <div class="d-flex align-items-center gap-3">
                 <div class="social-icons d-flex align-items-center gap-3 text-white-50">
