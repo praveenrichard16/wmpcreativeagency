@@ -15,15 +15,6 @@ $envPath = dirname(__DIR__) . '/.env';
 echo "<h3>1. Checking .env file</h3>";
 if (file_exists($envPath)) {
     echo "✅ .env file exists.<br>";
-    $lines = file($envPath);
-    foreach ($lines as $line) {
-        if (trim($line) === '' || strpos($line, '#') === 0) continue;
-        $parts = explode('=', $line, 2);
-        $key = trim($parts[0]);
-        if (in_array($key, ['APP_NAME', 'APP_ENV', 'APP_DEBUG', 'APP_URL', 'DB_CONNECTION', 'DB_HOST', 'DB_PORT', 'DB_DATABASE', 'DB_USERNAME'])) {
-            echo htmlspecialchars(trim($line)) . "<br>";
-        }
-    }
 } else {
     echo "❌ .env file does NOT exist at: " . htmlspecialchars($envPath) . "<br>";
 }
@@ -34,7 +25,7 @@ echo "<h3>2. Checking vendor autoload</h3>";
 if (file_exists($vendorPath)) {
     echo "✅ vendor/autoload.php exists.<br>";
 } else {
-    echo "❌ vendor/autoload.php does NOT exist. You need to run composer install on the server.<br>";
+    echo "❌ vendor/autoload.php does NOT exist.<br>";
 }
 
 // 3. Check storage directory write permissions
@@ -46,15 +37,8 @@ if (is_writable($storagePath)) {
     echo "❌ storage/ is NOT writable.<br>";
 }
 
-$cachePath = dirname(__DIR__) . '/bootstrap/cache';
-if (is_writable($cachePath)) {
-    echo "✅ bootstrap/cache/ is writable.<br>";
-} else {
-    echo "❌ bootstrap/cache/ is NOT writable.<br>";
-}
-
-// 4. Test Database Connection
-echo "<h3>4. Testing Database Connection</h3>";
+// 4. Test Database Connection and List Tables
+echo "<h3>4. Testing Database Connection & Tables</h3>";
 try {
     $dbType = 'mysql';
     $dbHost = '127.0.0.1';
@@ -69,21 +53,58 @@ try {
         PDO::ATTR_TIMEOUT => 5,
     ]);
     echo "✅ Successfully connected to database using PDO!<br>";
+    
+    $tablesQuery = $pdo->query("SHOW TABLES");
+    $tables = $tablesQuery->fetchAll(PDO::FETCH_COLUMN);
+    if (empty($tables)) {
+        echo "⚠️ Database is empty. No tables found! You need to run migrations.<br>";
+    } else {
+        echo "✅ Tables in database: " . implode(', ', $tables) . "<br>";
+    }
 } catch (Exception $e) {
     echo "❌ Database connection failed: " . htmlspecialchars($e->getMessage()) . "<br>";
 }
 
-// 5. Read Laravel Log file (last 20 lines)
-echo "<h3>5. Laravel Log File (Latest 20 lines)</h3>";
+// 5. Read Laravel Log file for actual Exception messages (filtering out stack trace noise)
+echo "<h3>5. Laravel Log File (Exceptions found)</h3>";
 $logPath = dirname(__DIR__) . '/storage/logs/laravel.log';
 if (file_exists($logPath)) {
-    $logContent = file($logPath);
-    $lastLines = array_slice($logContent, -20);
-    echo "<pre style='background:#f4f4f4; padding:10px; border:1px solid #ccc; max-height: 400px; overflow: auto;'>";
-    foreach ($lastLines as $line) {
-        echo htmlspecialchars($line);
+    $logLines = file($logPath);
+    $exceptions = [];
+    
+    // Scan backward to find the most recent actual exception messages
+    for ($i = count($logLines) - 1; $i >= 0; $i--) {
+        $line = $logLines[$i];
+        // Look for the main exception error header line
+        if (preg_match('/^\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\] [a-zA-Z0-9_]+\.(ERROR|CRITICAL|EMERGENCY|ALERT):/', $line)) {
+            // Grab this header and a few subsequent lines of description
+            $errorBlock = $line;
+            for ($j = 1; $j <= 4; $j++) {
+                if (isset($logLines[$i + $j])) {
+                    $next = $logLines[$i + $j];
+                    if (strpos($next, '#') !== 0) { // Only add non-stacktrace lines
+                        $errorBlock .= $next;
+                    } else {
+                        break;
+                    }
+                }
+            }
+            $exceptions[] = $errorBlock;
+            if (count($exceptions) >= 5) {
+                break; // Stop after listing the latest 5 unique errors
+            }
+        }
     }
-    echo "</pre>";
+    
+    if (empty($exceptions)) {
+        echo "ℹ️ No recent Laravel exceptions found in logs.<br>";
+    } else {
+        foreach ($exceptions as $ex) {
+            echo "<pre style='background:#fee; color:#811; padding:10px; border:1px solid #ecc; margin-bottom:10px; white-space: pre-wrap;'>";
+            echo htmlspecialchars($ex);
+            echo "</pre>";
+        }
+    }
 } else {
-    echo "ℹ️ laravel.log does not exist yet (or no errors logged).<br>";
+    echo "ℹ️ laravel.log does not exist yet.<br>";
 }
