@@ -11,10 +11,12 @@
                     WMP Creative is a luxury design agency dedicated to crafting premium digital storefronts, high-end visual kits, vector guidelines, and developer-centric templates.
                 </p>
                 <div class="d-flex gap-3">
-                    <a href="#" class="text-secondary fs-5 hover-color-primary"><i class="bi bi-twitter-x"></i></a>
-                    <a href="#" class="text-secondary fs-5 hover-color-primary"><i class="bi bi-instagram"></i></a>
-                    <a href="#" class="text-secondary fs-5 hover-color-primary"><i class="bi bi-github"></i></a>
-                    <a href="#" class="text-secondary fs-5 hover-color-primary"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://www.linkedin.com/company/startup-by-123krishnagiri/" target="_blank" class="text-secondary fs-5 hover-color-primary"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://www.youtube.com/@startupby123krishnagiri" target="_blank" class="text-secondary fs-5 hover-color-primary"><i class="bi bi-youtube"></i></a>
+                    <a href="https://www.instagram.com/startup.123krishnagiri" target="_blank" class="text-secondary fs-5 hover-color-primary"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.facebook.com/startupby123krishnagiri/" target="_blank" class="text-secondary fs-5 hover-color-primary"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.threads.com/@startup.123krishnagiri" target="_blank" class="text-secondary fs-5 hover-color-primary"><i class="bi bi-threads"></i></a>
+                    <a href="https://whatsapp.com/channel/0029Vawangz5fM5chbmiPB3a" target="_blank" class="text-secondary fs-5 hover-color-primary"><i class="bi bi-whatsapp"></i></a>
                 </div>
             </div>
 
@@ -49,7 +51,9 @@
                         </button>
                     </div>
                 </form>
-                <small class="text-muted d-block"><i class="bi bi-geo-alt-fill me-1"></i>London, United Kingdom • support@wmpcreative.com</small>
+                <small class="text-muted d-block"><i class="bi bi-geo-alt-fill me-1"></i><a href="https://maps.app.goo.gl/eSCkg1xyFC5CRKYC7" target="_blank" class="text-muted text-decoration-none hover-link">3/341 Subedharmedu, Kattinayanapalli Po, Krishnagiri -635001</a></small>
+                <small class="text-muted d-block mt-1"><i class="bi bi-envelope-fill me-1"></i><a href="mailto:support@wmpcreativeagency.com" class="text-muted text-decoration-none hover-link">support@wmpcreativeagency.com</a></small>
+                <small class="text-muted d-block mt-1"><i class="bi bi-telephone-fill me-1"></i><a href="tel:+918940684434" class="text-muted text-decoration-none hover-link">+91 8940684434</a></small>
             </div>
         </div>
 

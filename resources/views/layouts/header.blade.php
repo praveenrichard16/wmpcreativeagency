@@ -4,12 +4,12 @@
             <!-- Left Side -->
             <div class="d-flex align-items-center gap-3">
                 <div class="social-icons d-flex align-items-center gap-3 text-white-50">
-                    <a href="#" class="text-white-50 hover-text-white"><i class="bi bi-linkedin"></i></a>
-                    <a href="#" class="text-white-50 hover-text-white"><i class="bi bi-youtube"></i></a>
-                    <a href="#" class="text-white-50 hover-text-white"><i class="bi bi-instagram"></i></a>
-                    <a href="#" class="text-white-50 hover-text-white"><i class="bi bi-twitter-x"></i></a>
-                    <a href="#" class="text-white-50 hover-text-white"><i class="bi bi-facebook"></i></a>
-                    <a href="#" class="text-white-50 hover-text-white"><i class="bi bi-pinterest"></i></a>
+                    <a href="https://www.linkedin.com/company/startup-by-123krishnagiri/" target="_blank" class="text-white-50 hover-text-white"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://www.youtube.com/@startupby123krishnagiri" target="_blank" class="text-white-50 hover-text-white"><i class="bi bi-youtube"></i></a>
+                    <a href="https://www.instagram.com/startup.123krishnagiri" target="_blank" class="text-white-50 hover-text-white"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.facebook.com/startupby123krishnagiri/" target="_blank" class="text-white-50 hover-text-white"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.threads.com/@startup.123krishnagiri" target="_blank" class="text-white-50 hover-text-white"><i class="bi bi-threads"></i></a>
+                    <a href="https://whatsapp.com/channel/0029Vawangz5fM5chbmiPB3a" target="_blank" class="text-white-50 hover-text-white"><i class="bi bi-whatsapp"></i></a>
                 </div>
                 <div class="topbar-divider"></div>
                 <a href="#" class="btn btn-creative btn-sm py-1 px-3 d-flex align-items-center gap-2" style="font-size: 0.75rem; border-radius: 4px; box-shadow: none;">
@@ -20,7 +20,7 @@
             <!-- Right Side -->
             <div class="d-flex align-items-center gap-3 text-white-50" style="font-size: 0.85rem; font-family: var(--font-brand); font-weight: 600;">
                 <div class="d-flex align-items-center gap-2 text-white">
-                    <i class="bi bi-telephone-fill text-warning"></i> +91 8000-000000
+                    <i class="bi bi-telephone-fill text-warning"></i> +91 8940684434
                 </div>
                 
                 <div class="topbar-divider"></div>

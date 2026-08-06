@@ -172,7 +172,9 @@
                         </button>
                     </div>
                 </form>
-                <small class="text-muted d-block"><i class="bi bi-geo-alt-fill me-1"></i>London, United Kingdom • support@wmpcreative.com</small>
+                <small class="text-muted d-block"><i class="bi bi-geo-alt-fill me-1"></i><a href="https://maps.app.goo.gl/eSCkg1xyFC5CRKYC7" target="_blank" class="text-muted text-decoration-none hover-link">3/341 Subedharmedu, Kattinayanapalli Po, Krishnagiri -635001</a></small>
+                <small class="text-muted d-block mt-1"><i class="bi bi-envelope-fill me-1"></i><a href="mailto:support@wmpcreativeagency.com" class="text-muted text-decoration-none hover-link">support@wmpcreativeagency.com</a></small>
+                <small class="text-muted d-block mt-1"><i class="bi bi-telephone-fill me-1"></i><a href="tel:+918940684434" class="text-muted text-decoration-none hover-link">+91 8940684434</a></small>
             </div>
         </div>
 

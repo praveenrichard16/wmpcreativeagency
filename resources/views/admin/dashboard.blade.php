@@ -815,7 +815,7 @@
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label-creative">SUPPORT DESK EMAIL</label>
-                                    <input type="email" class="form-control form-control-creative" value="support@wmpcreative.com" disabled>
+                                    <input type="email" class="form-control form-control-creative" value="support@wmpcreativeagency.com" disabled>
                                 </div>
                             </div>
 
