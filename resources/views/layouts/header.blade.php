@@ -29,29 +29,7 @@
                     Get a Proposal <i class="bi bi-rocket-takeoff-fill"></i>
                 </a>
 
-                <div class="topbar-divider"></div>
-                
-                @auth
-                    @if (Auth::user()->is_admin)
-                        <a href="{{ route('admin.dashboard') }}" class="text-white text-decoration-none hover-color-primary d-flex align-items-center gap-1 text-uppercase">
-                            <i class="bi bi-box-arrow-in-right"></i> ADMIN
-                        </a>
-                    @else
-                        <a href="{{ route('dashboard') }}" class="text-white text-decoration-none hover-color-primary d-flex align-items-center gap-1 text-uppercase">
-                            <i class="bi bi-box-arrow-in-right"></i> VAULT
-                        </a>
-                    @endif
-                    <form method="POST" action="{{ route('logout') }}" class="mb-0 ms-1">
-                        @csrf
-                        <button type="submit" class="text-white-50 text-decoration-none hover-color-primary btn btn-link p-0 m-0 text-decoration-none d-flex align-items-center" style="font-size: 0.85rem; font-family: var(--font-brand); font-weight: 600; box-shadow:none;">
-                            Logout
-                        </button>
-                    </form>
-                @else
-                    <button type="button" class="btn btn-link p-0 text-white text-decoration-none hover-color-primary d-flex align-items-center gap-1 text-uppercase" data-bs-toggle="modal" data-bs-target="#authModal" onclick="switchAuthView('login')" style="font-size: 0.85rem; font-family: var(--font-brand); font-weight: 600; box-shadow:none;">
-                        <i class="bi bi-box-arrow-in-right"></i> LOGIN
-                    </button>
-                @endauth
+
                 
 
             </div>
@@ -218,14 +196,32 @@
                 </li>
             </ul>
 
-            <div class="d-none d-lg-flex align-items-center gap-4 ms-lg-auto right-nav-actions">
+            <div class="d-none d-lg-flex align-items-center gap-3 ms-lg-auto right-nav-actions">
                 <button class="btn btn-link p-0 text-dark hover-color-primary search-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#searchCollapse" aria-expanded="false" aria-controls="searchCollapse">
                     <i class="bi bi-search fs-5"></i>
                 </button>
                 
-                <a href="#" class="btn py-2 px-4 rounded-pill fw-bold" style="background: var(--color-accent); color: var(--color-dark); font-family: var(--font-brand); font-size: 0.9rem; border: none; box-shadow: 0 4px 14px rgba(255, 193, 7, 0.4); transition: transform 0.2s, box-shadow 0.2s;">
-                    <i class="bi bi-headset me-1"></i> Schedule Free Consultation
-                </a>
+                @auth
+                    @if (Auth::user()->is_admin)
+                        <a href="{{ route('admin.dashboard') }}" class="btn btn-creative py-2 px-4 rounded-pill fw-bold" style="font-family: var(--font-brand); font-size: 0.9rem;">
+                            <i class="bi bi-speedometer2 me-1"></i> Admin Panel
+                        </a>
+                    @else
+                        <a href="{{ route('dashboard') }}" class="btn btn-creative py-2 px-4 rounded-pill fw-bold" style="font-family: var(--font-brand); font-size: 0.9rem;">
+                            <i class="bi bi-shield-lock me-1"></i> Vault
+                        </a>
+                    @endif
+                    <form method="POST" action="{{ route('logout') }}" class="mb-0">
+                        @csrf
+                        <button type="submit" class="btn btn-outline-dark py-2 px-3 rounded-pill fw-bold" style="font-family: var(--font-brand); font-size: 0.9rem; border-width: 2px;">
+                            Logout
+                        </button>
+                    </form>
+                @else
+                    <button type="button" class="btn btn-login-animated" data-bs-toggle="modal" data-bs-target="#authModal" onclick="switchAuthView('login')">
+                        <i class="bi bi-box-arrow-in-right"></i> Login
+                    </button>
+                @endauth
             </div>
             
             <!-- Mobile Search Bar (Since we hid it in topbar for desktop) -->
