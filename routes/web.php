@@ -33,6 +33,9 @@ Route::get('/blogs/category/{slug}', [BlogController::class, 'category'])->name(
 Route::get('/blogs/subcategory/{slug}', [BlogController::class, 'subcategory'])->name('blogs.subcategory');
 Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('blogs.show');
 
+// Auto-deployment Webhook Route
+Route::match(['get', 'post'], '/deploy-hook', [\App\Http\Controllers\DeploymentController::class, 'deploy']);
+
 // Guest-Only Routes (login, registration)
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
