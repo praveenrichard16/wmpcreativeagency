@@ -53,19 +53,7 @@
                     </button>
                 @endauth
                 
-                <div class="topbar-divider"></div>
-                
-                <div class="dropdown">
-                    <a href="#" class="text-white text-decoration-none d-flex align-items-center gap-2 dropdown-toggle" data-bs-toggle="dropdown" style="font-size: 0.85rem;">
-                        <i class="bi bi-globe text-danger"></i> Global Presence
-                    </a>
-                </div>
-                
-                <div class="dropdown ms-2">
-                    <a href="#" class="text-white text-decoration-none d-flex align-items-center gap-2 dropdown-toggle" data-bs-toggle="dropdown" style="font-size: 0.85rem;">
-                        <img src="https://flagcdn.com/w20/us.png" alt="English" width="16"> English
-                    </a>
-                </div>
+
             </div>
         </div>
     </div>
