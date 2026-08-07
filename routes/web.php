@@ -115,5 +115,18 @@ Route::middleware('auth')->group(function () {
         // Home Page Sliders
         Route::post('/sliders', [AdminSliderController::class, 'store'])->name('admin.sliders.store');
         Route::delete('/sliders/{id}', [AdminSliderController::class, 'destroy'])->name('admin.sliders.destroy');
+
+        // Run database migrations on live server
+        Route::get('/run-migrations', function () {
+            if (!Auth::check() || !Auth::user()->is_admin) {
+                abort(403, 'Unauthorized access.');
+            }
+            try {
+                \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+                return 'Database migrated successfully. <a href="/admin/dashboard">Return to Dashboard</a>';
+            } catch (\Exception $e) {
+                return 'Migration failed: ' . $e->getMessage() . ' <a href="/admin/dashboard">Return to Dashboard</a>';
+            }
+        })->name('admin.migrate');
     });
 });
