@@ -12,21 +12,29 @@
                     <a href="https://whatsapp.com/channel/0029Vawangz5fM5chbmiPB3a" target="_blank" class="text-white-50 hover-text-white"><i class="bi bi-whatsapp"></i></a>
                 </div>
                 <div class="topbar-divider"></div>
-                <a href="#" class="btn btn-creative btn-sm py-1 px-3 d-flex align-items-center gap-2" style="font-size: 0.75rem; border-radius: 4px; box-shadow: none;">
-                    <i class="bi bi-graph-up-arrow"></i> Career With Us
+                <a href="#" class="btn btn-rocket-theme btn-sm py-1 px-3 d-flex align-items-center gap-2" style="font-size: 0.75rem; border-radius: 8px;">
+                    Career With Us <i class="bi bi-briefcase-fill floating-icon"></i>
                 </a>
             </div>
 
             <!-- Right Side -->
             <div class="d-flex align-items-center gap-3 text-white-50" style="font-size: 0.85rem; font-family: var(--font-brand); font-weight: 600;">
-                <div class="d-flex align-items-center gap-2 text-white">
-                    <i class="bi bi-telephone-fill text-warning"></i> +91 8940684434
+                <div class="d-flex align-items-center gap-1 text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="phone-ring text-white me-1">
+                        <rect x="5" y="10" width="14" height="10" rx="2" ry="2"></rect>
+                        <path d="M3 9h18"></path>
+                        <path d="M7 9V7a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"></path>
+                        <circle cx="12" cy="15" r="2.5"></circle>
+                        <path d="M3.5 3.5c-2 1.5-2 3.5 0 5"></path>
+                        <path d="M20.5 3.5c2 1.5 2 3.5 0 5"></path>
+                    </svg>
+                    +91 8940684434
                 </div>
                 
                 <div class="topbar-divider"></div>
                 
-                <a href="{{ route('services.show', 'sales-funnel') }}" class="btn btn-creative btn-sm py-1 px-3 d-flex align-items-center gap-2" style="font-size: 0.75rem; border-radius: 4px; box-shadow: none;">
-                    Get a Proposal <i class="bi bi-rocket-takeoff-fill"></i>
+                <a href="{{ route('services.show', 'sales-funnel') }}" class="btn btn-rocket-theme btn-sm py-1 px-3 d-flex align-items-center gap-2" style="font-size: 0.75rem; border-radius: 8px;">
+                    Get a Proposal <span class="floating-icon">🚀</span>
                 </a>
 
 
@@ -56,8 +64,8 @@
                     </a>
                 @endif
             @else
-                <button type="button" class="btn btn-creative btn-sm py-2 px-3" data-bs-toggle="modal" data-bs-target="#authModal" onclick="switchAuthView('login')" style="font-size: 0.8rem; box-shadow: none;">
-                    Login
+                <button type="button" class="btn btn-rocket-theme btn-sm py-2 px-3 d-flex align-items-center gap-1" data-bs-toggle="modal" data-bs-target="#authModal" onclick="switchAuthView('login')" style="font-size: 0.8rem;">
+                    Login <i class="bi bi-box-arrow-in-right floating-icon"></i>
                 </button>
             @endauth
             
@@ -218,8 +226,8 @@
                         </button>
                     </form>
                 @else
-                    <button type="button" class="btn btn-login-animated" data-bs-toggle="modal" data-bs-target="#authModal" onclick="switchAuthView('login')">
-                        <i class="bi bi-box-arrow-in-right"></i> Login
+                    <button type="button" class="btn btn-rocket-theme btn-sm py-2 px-3 d-flex align-items-center gap-1" data-bs-toggle="modal" data-bs-target="#authModal" onclick="switchAuthView('login')">
+                        Login <i class="bi bi-box-arrow-in-right floating-icon"></i>
                     </button>
                 @endauth
             </div>

@@ -52,6 +52,11 @@
                     </button>
                 </li>
                 <li class="admin-sidebar-menu-item nav-item" role="presentation">
+                    <button class="nav-link admin-sidebar-link w-100 text-start border-0" id="sliders-tab" data-bs-toggle="tab" data-bs-target="#sliders-pane" type="button" role="tab" aria-controls="sliders-pane" aria-selected="false">
+                        <i class="bi bi-images"></i> Home Sliders
+                    </button>
+                </li>
+                <li class="admin-sidebar-menu-item nav-item" role="presentation">
                     <button class="nav-link admin-sidebar-link w-100 text-start border-0" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings-pane" type="button" role="tab" aria-controls="settings-pane" aria-selected="false">
                         <i class="bi bi-sliders2"></i> System Settings
                     </button>
@@ -754,6 +759,78 @@
                                                 <tr>
                                                     <td colspan="3" class="text-center py-4 text-muted border-0">
                                                         No blog articles published yet.
+                                                    </td>
+                                                </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HOME SLIDERS PANE -->
+                <div class="tab-pane fade" id="sliders-pane" role="tabpanel" aria-labelledby="sliders-tab">
+                    <h2 class="mb-4" style="font-weight: 800;">Home Page Sliders</h2>
+                    
+                    <div class="row g-4">
+                        <!-- Upload New Slider -->
+                        <div class="col-lg-4">
+                            <div class="white-panel p-4 h-100">
+                                <h5 class="mb-4 text-danger fw-bold border-bottom pb-2" style="font-family: var(--font-brand);">Add New Slider</h5>
+                                <form action="{{ route('admin.sliders.store') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="mb-3">
+                                        <label class="form-label-creative">SLIDER IMAGE</label>
+                                        <input type="file" name="image" class="form-control" style="border-radius: 8px;" accept="image/*" required>
+                                        <small class="text-muted mt-1 d-block">Recommended size: 1920x600px. Max 5MB.</small>
+                                    </div>
+                                    <button type="submit" class="btn btn-creative w-100 py-2">
+                                        <i class="bi bi-cloud-arrow-up-fill me-1"></i> Upload Slider
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <!-- List Sliders -->
+                        <div class="col-lg-8">
+                            <div class="white-panel p-0 h-100">
+                                <div class="p-4 border-bottom">
+                                    <h5 class="mb-0 text-danger fw-bold" style="font-family: var(--font-brand);">Active Sliders</h5>
+                                </div>
+                                <div class="table-responsive p-0">
+                                    <table class="table admin-table mb-0 align-middle">
+                                        <thead class="bg-light">
+                                            <tr>
+                                                <th class="border-0 px-4 py-3" style="border-radius: 12px 0 0 0;">Image Preview</th>
+                                                <th class="border-0 px-4 py-3">Order</th>
+                                                <th class="border-0 px-4 py-3 text-end" style="border-radius: 0 12px 0 0;">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @forelse ($sliders as $slider)
+                                                <tr>
+                                                    <td class="px-4 py-3 border-0">
+                                                        <img src="{{ asset($slider->image_path) }}" alt="Slider" style="height: 60px; border-radius: 6px; object-fit: cover;">
+                                                    </td>
+                                                    <td class="px-4 py-3 border-0">
+                                                        <span class="badge bg-secondary">{{ $slider->order }}</span>
+                                                    </td>
+                                                    <td class="px-4 py-3 border-0 text-end">
+                                                        <form method="POST" action="{{ route('admin.sliders.destroy', $slider->id) }}" onsubmit="return confirm('Delete this slider?')" class="mb-0">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-outline-danger btn-sm px-2 py-1" style="border-radius: 6px;">
+                                                                <i class="bi bi-trash"></i>
+                                                            </button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="3" class="text-center py-4 text-muted border-0">
+                                                        No sliders found. Upload one to display on the home page!
                                                     </td>
                                                 </tr>
                                             @endforelse

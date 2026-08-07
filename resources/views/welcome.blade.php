@@ -6,6 +6,32 @@
 <!-- Storefront Header / Navbar -->
 @include('layouts.header')
 
+@if(isset($sliders) && $sliders->count() > 0)
+<!-- Dynamic Home Sliders -->
+<div id="homeHeroSlider" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+    <div class="carousel-indicators">
+        @foreach($sliders as $index => $slider)
+            <button type="button" data-bs-target="#homeHeroSlider" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}" aria-current="{{ $index == 0 ? 'true' : 'false' }}" aria-label="Slide {{ $index + 1 }}"></button>
+        @endforeach
+    </div>
+    <div class="carousel-inner">
+        @foreach($sliders as $index => $slider)
+            <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                <img src="{{ asset($slider->image_path) }}" class="d-block w-100" alt="Slider Image" style="width: 100%; height: auto;">
+            </div>
+        @endforeach
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#homeHeroSlider" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#homeHeroSlider" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+@endif
+
 <!-- Hero Section -->
 <div class="bg-white border-bottom border-light py-5">
     <div class="container py-4">

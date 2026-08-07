@@ -28,6 +28,8 @@ class AdminController extends Controller
         $blogCategories = \App\Models\BlogCategory::with('subcategories')->orderBy('name', 'asc')->get();
         $blogSubcategories = \App\Models\BlogSubcategory::with('category')->orderBy('name', 'asc')->get();
         $blogs = \App\Models\Blog::with(['category', 'subcategory'])->orderBy('created_at', 'desc')->get();
+        
+        $sliders = \App\Models\Slider::orderBy('order', 'asc')->get();
 
         $totalSales = Purchase::sum('price_paid');
         $totalTicketsCount = SupportTicket::count();
@@ -47,7 +49,8 @@ class AdminController extends Controller
             'totalUsersCount',
             'blogCategories',
             'blogSubcategories',
-            'blogs'
+            'blogs',
+            'sliders'
         ));
     }
 

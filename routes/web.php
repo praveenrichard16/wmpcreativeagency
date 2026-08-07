@@ -9,6 +9,7 @@ use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AdminBlogController;
+use App\Http\Controllers\AdminSliderController;
 use App\Models\Product;
 use App\Models\Purchase;
 use App\Models\SupportTicket;
@@ -18,7 +19,8 @@ use Illuminate\Support\Facades\Auth;
 // Public Storefront (loads products dynamically)
 Route::get('/', function () {
     $products = Product::orderBy('created_at', 'desc')->get();
-    return view('welcome', compact('products'));
+    $sliders = \App\Models\Slider::where('is_active', true)->orderBy('order', 'asc')->get();
+    return view('welcome', compact('products', 'sliders'));
 })->name('storefront');
 
 // Services Dynamic Pages
@@ -109,5 +111,9 @@ Route::middleware('auth')->group(function () {
         
         Route::post('/blogs', [AdminBlogController::class, 'storeBlog'])->name('admin.blogs.store');
         Route::delete('/blogs/{id}', [AdminBlogController::class, 'destroyBlog'])->name('admin.blogs.destroy');
+        
+        // Home Page Sliders
+        Route::post('/sliders', [AdminSliderController::class, 'store'])->name('admin.sliders.store');
+        Route::delete('/sliders/{id}', [AdminSliderController::class, 'destroy'])->name('admin.sliders.destroy');
     });
 });
